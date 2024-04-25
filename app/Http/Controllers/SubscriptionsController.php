@@ -61,4 +61,22 @@ class SubscriptionsController extends Controller
 
         return json_decode($result);
     }
+
+    public function checkin(Request $request, $args)
+    {
+        $ok = AutenticationService::verificaAutenticacao($request->bearerToken());
+        if (!$ok)
+        {
+            return response()->json([
+                "success" => false,
+                "message" => "Não autorizado!",
+                403
+            ]);
+        }
+            
+        $token = AutenticationService::login();
+        $result = SubscriptionsService::checkin($args, $token);
+
+        return json_decode($result);
+    }
 }

@@ -18,3 +18,4 @@ use Illuminate\Support\Facades\Route;
 Route::post('subscriptions', [SubscriptionsController::class, 'index']);
 Route::get('subscriptions/{id}', [SubscriptionsController::class, 'searchSubscription']);
 Route::post('subscriptions/cancel/{id}', [SubscriptionsController::class, 'cancel']);
+Route::post('checkin/{id}', [SubscriptionsController::class, 'checkin']);
